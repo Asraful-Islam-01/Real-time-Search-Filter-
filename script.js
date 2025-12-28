@@ -56,3 +56,21 @@ const clearBtn = document.getElementById("clearBtn"); // Button to clear the sea
  * @param {string} query - the search term to highlight 
  * @resturns {string} - HTML string with highlighted matches wrapped in <mark> tags
  */
+
+function highlightMatch(text, query) {
+    //If no query provided, return original text without highligting
+    if(!query) return text;
+
+    //Create a regular expression to find all occurences of the query (case-insensetive)
+    //'gi' flags: g = global (find all the matches), i = case-insensitive
+    const regex = new RegExp(query, "gi");
+
+    // Replace all the matches with the same text warpped in <mark> tags for highlighting
+    //$& represents the matched substring
+    return text.replace(regex, "<mark>$&</mark>");
+}
+
+/**
+ * Filters and displays items based on search query
+ * @param {string} query - The search term entered by the user 
+ */
